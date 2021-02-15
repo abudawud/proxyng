@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+        proxy-01:
+                image: nginx:alpine
+                container_name: proxy-01
+                ports:
+                        - 80:80
+                volumes:
+                        - ${NGINX_CFG}:/etc/nginx/conf.d:ro
+                        - ${APPS_01}:/usr/share/nginx/html/tools-tracking:ro
+                restart: always
